@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="NearWallet.Controls.Wallet.PageResultSending"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NearWallet.Controls.Wallet"
+             mc:Ignorable="d" Height="241" Width="593" IsVisibleChanged="UserControl_IsVisibleChanged">
+    <Grid Background="WhiteSmoke">
+        <StackPanel HorizontalAlignment="Center" Width="400">
+            <Label x:Name="lb_result" Foreground="{StaticResource labelColor}" Margin="0,30,0,0" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center">Transaction complete!</Label>
+            <TextBlock FontWeight="Bold" FontSize="16" HorizontalAlignment="Center">
+                <Run Foreground="{StaticResource labelColor}">You sent</Run>
+                <Run x:Name="rn_amount" Foreground="#FF4893FF">1</Run>
+                <Run Foreground="#FF4893FF"> NEAR (</Run>
+                <Run x:Name="rn_price" Foreground="#FF4893FF">≈ 8.96 USD</Run>
+                <Run Foreground="#FF4893FF">)</Run>
+            </TextBlock>
+            <TextBlock FontWeight="Bold" FontSize="16" HorizontalAlignment="Center">
+                <Run Foreground="{StaticResource labelColor}">to</Run>
+                <Run x:Name="rn_toId" Foreground="{StaticResource colorPlus}">near</Run>
+            </TextBlock>
+            <Button x:Name="bt_continue" Content="Continue" Style="{StaticResource sendingButton}"
+                 Height="40" Margin="0,40,0,0" Click="Bt_continue_Click_1" />
+            <Button x:Name="bt_view" Content="View on Explorer" Style="{StaticResource infoButton}"
+                 Height="40" Margin="0,10,0,0" Click="Bt_view_Click"  />
+        </StackPanel>
+    </Grid>
+</UserControl>

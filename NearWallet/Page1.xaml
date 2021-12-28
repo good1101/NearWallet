@@ -1,0 +1,35 @@
+﻿<StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel.Resources>
+
+        <DrawingImage x:Key="RestoreIcon">
+
+            <DrawingImage.Drawing>
+
+                <DrawingGroup>
+
+                    <DrawingGroup.Children>
+
+                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M 898.726,800.022L 913.274,800.022L 913.274,804.022L 918.607,804.022L 918.607,815.978L 904.06,815.978L 904.06,811.978L 898.726,811.978L 898.726,800.022 Z M 913.274,811.978L 906.57,811.978L 906.57,813.278L 915.964,813.278L 915.964,807.909L 913.274,807.909L 913.274,811.978 Z M 901.237,803.908L 901.237,809.278L 904.06,809.278L 904.06,804.022L 910.631,804.022L 910.631,803.909L 901.237,803.908 Z M 910.631,809.278L 910.631,807.909L 906.57,807.908L 906.57,809.278L 910.631,809.278 Z ">
+
+                            <GeometryDrawing.Pen>
+
+                                <Pen Thickness="1" LineJoin="Round" Brush="#C7141414"/>
+
+                            </GeometryDrawing.Pen>
+
+                        </GeometryDrawing>
+
+                    </DrawingGroup.Children>
+
+                </DrawingGroup>
+
+            </DrawingImage.Drawing>
+
+        </DrawingImage>
+
+    </StackPanel.Resources>
+
+</StackPanel>
