@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\VSProjects\MyProject\NearWallet\NearWallet\NearWallet\obj\Debug\
+E:\Git\NearWallet\NearWallet\obj\Debug\
 NearWallet
 none
 false
 DEBUG;TRACE
-E:\VSProjects\MyProject\NearWallet\NearWallet\NearWallet\App.xaml
-221611968509
+E:\Git\NearWallet\NearWallet\App.xaml
+211710394225
 
-41-468443791
-25-1296197264
-Controls\Accounts\AccountView.xaml;Controls\Accounts\KeyView.xaml;Controls\Accounts\PageAccount.xaml;Controls\Accounts\PageAddAccount.xaml;Controls\Accounts\PageSelectAccount.xaml;Controls\Activity\ActionControl.xaml;Controls\Activity\PageActivity.xaml;Controls\MessageView.xaml;Controls\PageHome.xaml;Controls\PageNavigate.xaml;Controls\PageWait.xaml;Controls\Settings\PageAddNetwork.xaml;Controls\Wallet\PageResultSending.xaml;Controls\Wallet\PageSend.xaml;Controls\Wallet\PageWaitSend.xaml;Controls\Wallet\PageWallet.xaml;Controls\Wallet\PageWalletInfo.xaml;Icons.xaml;MainWindow.xaml;Page1.xaml;Resources\logo.xaml;UserControl1.xaml;
+401254067718
+25-186852276
+Controls\Accounts\AccountView.xaml;Controls\Accounts\KeyView.xaml;Controls\Accounts\PageAccount.xaml;Controls\Accounts\PageAddAccount.xaml;Controls\Accounts\PageSelectAccount.xaml;Controls\Activity\ActionControl.xaml;Controls\Activity\PageActivity.xaml;Controls\MessageView.xaml;Controls\PageHome.xaml;Controls\PageNavigate.xaml;Controls\PageWait.xaml;Controls\Settings\PageAddNetwork.xaml;Controls\Wallet\PageResultSending.xaml;Controls\Wallet\PageSend.xaml;Controls\Wallet\PageWaitSend.xaml;Controls\Wallet\PageWallet.xaml;Controls\Wallet\PageWalletInfo.xaml;Icons.xaml;MainWindow.xaml;Page1.xaml;Resources\logo.xaml;
 
 False
 

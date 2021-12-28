@@ -46,7 +46,7 @@
     </Reference>
     <Reference Include="NearClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Alex\source\repos\NearClient\NearClient\bin\Debug\NearClient.dll</HintPath>
+      <HintPath>..\packages\NearClient\NearClient.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -128,9 +128,6 @@
     <Compile Include="Entities\Network\Networks.cs" />
     <Compile Include="Entities\Network\WalletNetwork.cs" />
     <Compile Include="Entities\Wallet\SendInfo.cs" />
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Activity\ActionInfo.cs" />
     <Compile Include="Utilites\Exceptions\ParseExceprion.cs" />
     <Compile Include="Utilites\FileConfig.cs" />
@@ -241,10 +238,6 @@
     <Page Include="Resources\logo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
