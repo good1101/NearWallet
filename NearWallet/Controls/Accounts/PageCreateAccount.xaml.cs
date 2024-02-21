@@ -1,16 +1,13 @@
 ﻿using NearClient;
 using NearClient.Utilities;
 using NearWallet.Controls.Ext;
-using NearWallet.Entities;
 using NearWallet.Entities.Network;
-using NearWallet.Entities.Wallet;
 using NearWallet.Utilites;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,22 +20,21 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace NearWallet.Controls.Wallet
+namespace NearWallet.Controls.Accounts
 {
     /// <summary>
-    /// Логика взаимодействия для PageSend.xaml
+    /// Логика взаимодействия для PageCreateAccount.xaml
     /// </summary>
-    public partial class PageSend : PageControl
+    public partial class PageCreateAccount : PageControl
     {
-        public PageSend()
+        public PageCreateAccount()
         {
             InitializeComponent();
+            IsNavigate = true;
         }
         private double _amountSend;
         private double _price;
-        private const int INTERVAL_REQUEST = 1000;
         private string _inputId;
-        DispatcherTimer _timer;
         private UInt128 _balans;
         private bool _isCheckID;
         private string _usdBalans;
@@ -51,6 +47,7 @@ namespace NearWallet.Controls.Wallet
                 AccountState state = await walletNetwork.GetAccountState(Networks.CurrentAccountId);
                 _balans = UInt128.Parse(state.Amount);
                 lb_balans.Content = Utility.FormatNearString(state.Amount) + " NEAR";
+                tb_accountID.Text = $".{Networks.CurrentAccountId}";
                 _price = await WebInfo.GetPriceNear();
             }
         }
@@ -83,10 +80,10 @@ namespace NearWallet.Controls.Wallet
             lb_usd.Content = _usdBalans;
             ChecData();
         }
-        
+
         private void Bt_back_Click(object sender, RoutedEventArgs e)
         {
-            PageWallet.Navigation.Back();
+            Back();
         }
 
         private void Tb_accountID_TextChanged(object sender, TextChangedEventArgs e)
@@ -94,32 +91,12 @@ namespace NearWallet.Controls.Wallet
             _isCheckID = false;
             tb_accountID.Foreground = Brushes.Gray;
             _inputId = (sender as TextBox).Text;
-            if (_timer == null)
-            {
-                _timer = new DispatcherTimer();
-                _timer.Tick += _timer_Tick;
-            }
-            if (!_timer.IsEnabled)
-            {
-                _timer.Interval = TimeSpan.FromMilliseconds(INTERVAL_REQUEST);
-                _timer.Start();
-            }
+            CheckAccountID(_inputId);
         }
 
-        private async void _timer_Tick(object sender, EventArgs e)
-        {
-            _timer.Stop();
-            await CheckAccountID(_inputId);
-            ChecData();
-
-        }
-
-        async Task CheckAccountID(string id)
+        void CheckAccountID(string id)
         {
             if (string.IsNullOrWhiteSpace(id) || id.Length < 2)
-                return;
-            WalletNetwork walletNetwork = Networks.GetCurrentNetwork();
-            if (!await walletNetwork.ExitsAccountId(id))
                 return;
             tb_accountID.Foreground = Brushes.Black;
             _isCheckID = true;
@@ -134,7 +111,7 @@ namespace NearWallet.Controls.Wallet
             UInt128 ner = Utility.GetNearFormat(_amountSend);
             if (_balans >= ner && ner != 0 && _isCheckID)
             {
-                
+
                 bt_send.IsEnabled = true;
             }
             else
@@ -143,19 +120,15 @@ namespace NearWallet.Controls.Wallet
             }
         }
 
-        private void Bt_send_Click(object sender, RoutedEventArgs e)
+        private async void Bt_send_Click(object sender, RoutedEventArgs e)
         {
-            SendInfo sendInfo = new SendInfo()
-            {
-                NearAmount = Utility.GetNearFormat(_amountSend),
-                USDAmount = _usdBalans,
-                FromAccountId = Networks.CurrentAccountId,
-                ToAccountId = _inputId
-            };
-            PageWaitSend pageWaitSend = new PageWaitSend(sendInfo);
-            PageWallet.Navigation.SetPage(pageWaitSend);
+            bt_send.IsEnabled = false;
+            WalletNetwork walletNetwork = Networks.GetCurrentNetwork();
+            var result = await walletNetwork.CreateAccount(_inputId, Utility.GetNearFormat(_amountSend));
+            if (result == null)
+                await MainWindow.Alert("Failed...");
+            else
+                await MainWindow.Alert($"Account {_inputId} created!");
         }
-
-
     }
 }

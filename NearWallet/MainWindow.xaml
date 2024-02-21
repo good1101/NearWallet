@@ -50,6 +50,9 @@
                         <Button Margin="2" Click="AddNetwork"
                             Content="add network"
                             Style="{StaticResource MahApps.Styles.Button.Flat}" />
+                        <Button Margin="2" Click="CreateAccount"
+                            Content="create account"
+                            Style="{StaticResource MahApps.Styles.Button.Flat}" />
                         <Button Margin="2"
                             Content="other"
                             Style="{StaticResource MahApps.Styles.Button.Flat}" />

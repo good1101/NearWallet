@@ -48,6 +48,7 @@ namespace NearWallet.Controls.Wallet
                 if (state == null) return;
                 string amount = Utility.FormatNearString(state.Amount);
                 lb_balasNear.Content = amount + " NEAR";
+                lb_accountId.Content = Networks.CurrentAccountId;
                 double numAmount = double.Parse(amount, CultureInfo.InvariantCulture);
                 double price = await WebInfo.GetPriceNear();
                 if (!double.IsNaN(price))

@@ -55,6 +55,10 @@ namespace NearWallet.Controls.Wallet
             pb.Visibility = Visibility.Visible;
             bt_send.IsEnabled = false;
             var res = await walletNetwork.Send(_sendInfo.ToAccountId, _sendInfo.NearAmount);
+            if(res == null)
+            {
+               await MainWindow.Alert("Failed.");
+            }
             _sendInfo.TransactionId = res.Transaction.Id;
             PageResultSending pageResultSending = new PageResultSending(_sendInfo);
             PageWallet.Navigation.SetPage(pageResultSending);

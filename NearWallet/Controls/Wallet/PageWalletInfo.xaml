@@ -9,7 +9,8 @@
     <Grid Background="WhiteSmoke" >
         <StackPanel Orientation="Vertical">
             <Label x:Name="lb_balansUsd" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Margin="0,50,0,0">$0</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Style="{StaticResource labelInfo}">Available Balance</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Style="{StaticResource labelInfo}">Available Balance</Label>
+            <Label x:Name="lb_accountId" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Style="{StaticResource labelInfo}"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0">
                 <Button x:Name="btSend"  Width="60" Height="60" Style="{StaticResource  homeButton}" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Margin="0,0,50,0" Click="BtSend_Click" >

@@ -60,6 +60,8 @@ namespace NearWallet.Utilites
         public static async Task<UInt128> GetBalansStaking(string accountId)
         {
             var stakingInfo = await GetStakingInfo(accountId);
+            if (stakingInfo == null)
+                return 0;
             UInt128 balans = 0;
             foreach (var bl in stakingInfo)
             {

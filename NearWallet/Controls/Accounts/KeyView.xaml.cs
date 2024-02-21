@@ -2,18 +2,9 @@
 using NearWallet.Entities.Network;
 using NearWallet.Utilites;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NearWallet.Controls.Accounts
@@ -37,7 +28,7 @@ namespace NearWallet.Controls.Accounts
 
         async void Init()
         {
-            string publickKey = await Networks.GetCurrentNetwork().GetPublickKey();
+            string publickKey = await Networks.GetCurrentNetwork().GetPublicKey();
             if (publickKey == _key)
                 bt_del.Visibility = Visibility.Hidden;
             tb_permission.Text = _permission;

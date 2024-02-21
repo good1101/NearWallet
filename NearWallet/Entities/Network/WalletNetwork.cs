@@ -37,7 +37,8 @@ namespace NearWallet.Entities.Network
                 NodeUrl = nodeUrl,
                 ProviderType = ProviderType.JsonRpc,
                 SignerType = SignerType.InMemory,
-                KeyStore = _keyStore
+                KeyStore = _keyStore,
+                WebProxy = new System.Net.WebProxy("127.0.0.1:8888")
             });
         }
 
@@ -82,7 +83,7 @@ namespace NearWallet.Entities.Network
         {
             try
             {
-                Account account = await _near.AccountAsync(accountId);
+                Account account = await _near.AccountAsync(accountId.ToLower());
                 AccountState state = await account.GetStateAsync();
                 return state;
             }
@@ -93,7 +94,7 @@ namespace NearWallet.Entities.Network
             }
         }
 
-        public async Task<string> GetPublickKey()
+        public async Task<string> GetPublicKey()
         {
             try
             {
@@ -162,6 +163,25 @@ namespace NearWallet.Entities.Network
                 Messages.AddError(e);
                 return null;
             }
+        }
+        public async Task<FinalExecutionOutcome> CreateAccount(string accountId, UInt128 amount)
+        {
+            try
+            {
+                Account account = await _near.AccountAsync(Networks.CurrentAccountId);
+                KeyPair privateKey = KeyPairEd25519.FromRandom64();
+                await AddAccount(accountId, privateKey.ToString());
+                PublicKey publicKey = privateKey.GetPublicKey();
+                var final = await account.CreateAccountAsync(accountId, publicKey, amount);
+                 return final;
+            }
+            catch(Exception e)
+            {
+                Messages.AddError(e);
+                return null;
+            }
+
+
         }
     }
 }

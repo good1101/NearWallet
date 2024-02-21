@@ -15,12 +15,20 @@ namespace NearWallet.Utilites
         
         public static async Task<dynamic> GetJson (string url)
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            WebRequest request = WebRequest.Create(url);
-            request.Proxy = new WebProxy("127.0.0.1", 8888);
+            ServicePointManager.SecurityProtocol =  SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12; ;
+
+            ServicePointManager
+    .ServerCertificateValidationCallback +=
+    (sender, cert, chain, sslPolicyErrors) => true;
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.Accept = "application/json";
+            request.Proxy = new WebProxy("127.0.0.1:8888");
             request.ContentType = "application/json; charset=utf-8";
+
             try
             {
+               
+          
                 WebResponse response = await request.GetResponseAsync();
                 string json = string.Empty;
                 using (StreamReader stream = new StreamReader(response.GetResponseStream()))
@@ -31,12 +39,10 @@ namespace NearWallet.Utilites
                 dynamic jObject = JsonConvert.DeserializeObject(json);
                 return jObject;
             }
-            catch
+            catch(Exception e)
             {
-                throw new Exception("There is no response from the server.");
+                throw new Exception("There is no response from the server. " + e.Message);
             }
-
-
         }
     }
 }

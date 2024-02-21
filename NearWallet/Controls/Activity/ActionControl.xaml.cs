@@ -128,7 +128,8 @@ namespace NearWallet.Controls.Activity
                 case ActionType.AddKey: return GetResources("rectKey") as Style;
                 case ActionType.CreateAccount: return GetResources("rectAccount") as Style;
                 case ActionType.DeleteKey: return GetResources("rectKeyDel") as Style;
-               
+                case ActionType.DeployContract: return GetResources("rectKey") as Style;
+
                 default: throw new NotImplementedException(actionType.ToString());
             }
         }

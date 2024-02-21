@@ -42,6 +42,7 @@ namespace NearWallet.Entities.Activity
                 case ActionType.AddKey: ParseAddKey(action); break;
                 case ActionType.CreateAccount: break;
                 case ActionType.DeleteKey: break;
+                case ActionType.DeployContract: break;
                 
                 default: throw new NotImplementedException(ActionType.ToString());
             }
@@ -76,7 +77,7 @@ namespace NearWallet.Entities.Activity
                 case "ADD_KEY": return ActionType.AddKey;
                 case "CREATE_ACCOUNT": return ActionType.CreateAccount;
                 case "DELETE_KEY": return ActionType.DeleteKey;
-
+                case "DEPLOY_CONTRACT": return ActionType.DeployContract;
                 default: throw new ParseException(name + " not found!");
 
             }

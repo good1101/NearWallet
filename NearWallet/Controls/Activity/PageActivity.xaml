@@ -9,9 +9,18 @@
     <Grid Background="WhiteSmoke" >
         <ScrollViewer x:Name="scroll">
             <Grid Width="500" Margin="0,30,0,0">
-                <StackPanel x:Name="sp_actions" Orientation="Vertical" Margin="0,0,0,20">
-                    <Button x:Name="bt_allList" Margin="0,10,0,0"  Content="View All" Style="{StaticResource sendingButton}"
-                Width="350" Height="40"  Click="Bt_allList_Click" VerticalAlignment="Bottom" />
+                <StackPanel x:Name="sp_actions"
+                            Orientation="Vertical" 
+                            Margin="0,0,0,20">
+                    <Button x:Name="bt_allList"
+                            Margin="0,10,0,0"  
+                            Content="View All"
+                            Style="{StaticResource sendingButton}"
+                            Width="350"
+                            
+                            Height="40" 
+                            Click="Bt_allList_Click" 
+                            VerticalAlignment="Bottom" />
                 </StackPanel>
             </Grid>
         </ScrollViewer>
